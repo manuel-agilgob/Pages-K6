@@ -1,0 +1,57 @@
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+     execution: local
+        script: k6/functionary/tests/front-functionary.js
+ web dashboard: http://127.0.0.1:5665
+        output: InfluxDBv1 (http://localhost:8086)
+
+     scenarios: (100.00%) 1 scenario, 58 max VUs, 5m0s max duration (incl. graceful stop):
+              * default: Up to 58 looping VUs for 4m30s over 3 stages (gracefulRampDown: 30s, gracefulStop: 30s)
+
+
+running (0m00.9s), 01/58 VUs, 0 complete and 0 interrupted iterations
+default   [   0% ] 01/58 VUs  0m00.9s/4m30.0s
+
+running (0m01.9s), 01/58 VUs, 3 complete and 0 interrupted iterations
+default   [   1% ] 01/58 VUs  0m01.9s/4m30.0s
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 26      9.600158/s
+    checks_succeeded...: 100.00% 26 out of 26
+    checks_failed......: 0.00%   0 out of 26
+
+    ✓ login 200
+    ✓ jwt presente
+    ✓ expedientes por usuario 200
+    ✓ hay data en expedientes por usuario
+    ✓ expedientes por juzgado 200
+    ✓ hay data en expedientes por juzgado
+
+    HTTP
+    http_req_duration..............: avg=182.6ms  min=113.31ms med=146.53ms max=505.69ms p(90)=209.15ms p(95)=328.9ms 
+      { expected_response:true }...: avg=182.6ms  min=113.31ms med=146.53ms max=505.69ms p(90)=209.15ms p(95)=328.9ms 
+    http_req_failed................: 0.00%  0 out of 13
+    http_reqs......................: 13     4.800079/s
+
+    EXECUTION
+    iteration_duration.............: avg=424.54ms min=290.01ms med=313.84ms max=1s       p(90)=664.76ms p(95)=835.97ms
+    iterations.....................: 6      2.215421/s
+    vus............................: 1      min=1       max=1 
+    vus_max........................: 58     min=58      max=58
+
+    NETWORK
+    data_received..................: 9.2 kB 3.4 kB/s
+    data_sent......................: 30 kB  11 kB/s
+
+
+
+
+running (0m02.7s), 00/58 VUs, 6 complete and 2 interrupted iterations
+default ✗ [   1% ] 02/58 VUs  0m02.7s/4m30.0s
